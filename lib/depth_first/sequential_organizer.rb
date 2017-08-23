@@ -1,6 +1,6 @@
 module DepthFirst
-  # Base serial organizer class
-  class SerialOrganizer < Task
+  # Base sequential organizer class
+  class SequentialOrganizer < Task
     TASKS = [].freeze
 
     def perform

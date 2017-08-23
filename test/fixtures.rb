@@ -22,8 +22,8 @@ class C < DepthFirst::Task
   end
 end
 
-# Serial ABC
-class SerialAbc < DepthFirst::SerialOrganizer
+# Sequential ABC
+class SequentialAbc < DepthFirst::SequentialOrganizer
   TASKS = [A, B, C].freeze
 end
 
