@@ -7,6 +7,6 @@ class TestTask < Minitest::Test
   end
 
   def test_perform
-    assert_equal(@result, test: true, b: 2)
+    assert_equal(@result, b: 2)
   end
 end

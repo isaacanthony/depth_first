@@ -3,7 +3,7 @@ require_relative 'test_helper'
 # Tests for DepthFirst::SequentialOrganizer
 class TestSequentialOrganizer < Minitest::Test
   def setup
-    @result = SequentialAbc.new(test: true).perform
+    @result = SequentialOrganizerAbc.new(test: true).perform
   end
 
   def test_perform

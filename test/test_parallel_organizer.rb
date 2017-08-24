@@ -3,7 +3,7 @@ require_relative 'test_helper'
 # Tests for DepthFirst::ParallelOrganizer
 class TestParallelOrganizer < Minitest::Test
   def setup
-    @result = ParallelAbc.new(test: true).perform
+    @result = ParallelOrganizerAbc.new(test: true).perform
   end
 
   def test_perform
