@@ -31,15 +31,3 @@ end
 class ParallelOrganizerAbc < DepthFirst::ParallelOrganizer
   TASKS = [A, B, C].freeze
 end
-
-# Sequential aggregator ABC
-class SequentialAggregatorAbc < DepthFirst::SequentialAggregator
-  TASKS = [A, B, C].freeze
-  KEY   = :results
-end
-
-# Parallel aggregator ABC
-class ParallelAggregatorAbc < DepthFirst::ParallelAggregator
-  TASKS = [A, B, C].freeze
-  KEY   = :results
-end

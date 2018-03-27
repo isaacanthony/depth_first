@@ -4,9 +4,15 @@ module DepthFirst
     TASKS = [].freeze
 
     def perform
-      self.class::TASKS.reduce(options) do |hsh, task|
+      tasks.reduce(options) do |hsh, task|
         hsh.merge(task.new(hsh).perform)
       end
+    end
+
+    private
+
+    def tasks
+      self.class::TASKS
     end
   end
 end

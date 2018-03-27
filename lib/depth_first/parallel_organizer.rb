@@ -1,12 +1,9 @@
 module DepthFirst
   # Base parallel organizer class
-  class ParallelOrganizer < Task
-    TASKS = [].freeze
-
+  class ParallelOrganizer < SequentialOrganizer
     def perform
-      self.class::TASKS
-        .map { |task| execute_promise(task) }
-        .reduce(options) { |a, e| resolve_promise(a, e) }
+      tasks.map { |task| execute_promise(task) }
+           .reduce(options) { |a, e| resolve_promise(a, e) }
     end
 
     private
