@@ -8,7 +8,7 @@ module DepthFirst
     end
 
     def perform
-      {}
+      options
     end
   end
 end
