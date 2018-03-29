@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email       =  'ianthony@optoro.com'
   s.homepage    =  'https://github.com/isaacanthony/depth_first'
   s.license     =  'MIT'
-  s.files       =  Dir.glob('lib/**/*') + %w(LICENSE Rakefile README.md)
+  s.files       =  Dir.glob('lib/**/*') + %w[LICENSE Rakefile README.md]
   s.add_runtime_dependency 'concurrent-ruby', '~> 1.0'
+  s.add_development_dependency 'byebug', '~> 10.0'
   s.add_development_dependency 'rubocop', '~> 0.54.0'
 end

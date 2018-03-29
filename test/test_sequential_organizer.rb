@@ -2,11 +2,16 @@ require_relative 'test_helper'
 
 # Tests for DepthFirst::SequentialOrganizer
 class TestSequentialOrganizer < Minitest::Test
-  def setup
-    @result = SequentialOrganizerAbc.new(test: true).perform
+  def test_perform
+    result = SequentialAbc.new(test: true).perform
+    assert_equal(result, test: true, a: 1, b: 2, c: 3)
   end
 
-  def test_perform
-    assert_equal(@result, test: true, a: 1, b: 2, c: 3)
+  def test_exception
+    err = assert_raises(RuntimeError) do
+      SequentialException.new(test: true).perform
+    end
+
+    assert_equal(err.message, 'Oops!')
   end
 end

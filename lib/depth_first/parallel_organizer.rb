@@ -14,6 +14,8 @@ module DepthFirst
 
     def resolve_promise(hsh, result)
       hsh.merge(result.value)
+    rescue TypeError
+      raise result.reason
     end
   end
 end
