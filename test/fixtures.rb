@@ -3,7 +3,6 @@ require 'depth_first'
 # Task A
 class A < DepthFirst::Task
   def perform
-    sleep(1)
     { a: 1 }
   end
 end
