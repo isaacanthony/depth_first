@@ -1,9 +1,10 @@
 # depth_first
 Depth-first search code organization gem allowing for sequential and concurrent code execution using [concurrent-ruby](https://github.com/ruby-concurrency/concurrent-ruby).
 
-## Example
-### Tasks
+## Tasks
 A task accepts an input hash and merges in a results hash.
+
+### Examples
 ```
 class A < DepthFirst::Task
   def perform
@@ -24,37 +25,47 @@ class C < DepthFirst::Task
 end
 ```
 
-### Organizers
+### Usage
+```
+> A.new(test: true).perform
+ => { test: true, a: 1 }
+> B.new(test: true).perform
+ => { test: true, b: 2 }
+```
+
+## Organizers
 An organizer chains together tasks, piping a hash through each subtask.
+
+## SequentialOrganizer
+Data is passed through `A`, `B`, and `C` sequentially. The input hash `{ testing: true }` is piped through A. The resulting hash `{ testing: true, a: 1 }` is then piped through B. And so on.
+
+### Example
 ```
 class SequentialAbc < DepthFirst::SequentialOrganizer
   TASKS = [A, B, C].freeze
 end
+```
 
+### Usage
+```
+> SequentialAbc.new(testing: true).perform
+ => { testing: true, a: 1, b: 2, c: 3 }
+```
+
+## ParallelOrganizer
+Data is passed through `A`, `B`, and `C` concurrently. All three classes execute in parallel. The input hash `{ testing: true }` is passed to all three classes and all three intermediate result hashes are merged into the final result hash once their promises are resolved.
+
+### Example
+```
 class ParallelAbc < DepthFirst::ParallelOrganizer
   TASKS = [A, B, C].freeze
 end
 ```
 
-## Usage
-### Task
-```
-> A.new(test: true).perform
-=> { test: true, a: 1 }
-```
-
-### SequentialOrganizer
-Data is passed through `A`, `B`, and `C` sequentially. The input hash `{ testing: true }` is piped through A. The resulting hash `{ testing: true, a: 1 }` is then piped through B. And so on.
-```
-> SequentialAbc.new(testing: true).perform
-=> { testing: true, a: 1, b: 2, c: 3 }
-```
-
-### ParallelOrganizer
-Data is passed through `A`, `B`, and `C` concurrently. All three classes execute in parallel. The input hash `{ testing: true }` is passed to all three classes and all three intermediate result hashes are merged into the final result hash once their promises are resolved.
+### Usage
 ```
 > ParallelAbc.new(testing: true).perform
-=> { testing: true, a: 1, b: 2, c: 3}
+ => { testing: true, a: 1, b: 2, c: 3}
 ```
 
 ## Note
