@@ -29,6 +29,7 @@ end
 ```
 > A.new(test: true).perform
  => { test: true, a: 1 }
+
 > B.new(test: true).perform
  => { test: true, b: 2 }
 ```
@@ -69,4 +70,4 @@ end
 ```
 
 ## Note
-An organizer can have a subtask which is itself another organizer. In this manner, code can be organized in an arbitrarily deep tree structure with order of execution roughly matching a Depth First Search algorithm.
+An organizer can have a subtask which is itself another organizer. In this manner, code can be organized in an arbitrarily-deep tree structure with order of execution roughly matching a Depth First Search algorithm.
