@@ -37,6 +37,12 @@ end
 ```
 
 ## Usage
+### Task
+```
+> A.new(test: true).perform
+=> { test: true, a: 1 }
+```
+
 ### SequentialOrganizer
 Data is passed through `A`, `B`, and `C` sequentially. The input hash `{ testing: true }` is piped through A. The resulting hash `{ testing: true, a: 1 }` is then piped through B. And so on.
 ```
